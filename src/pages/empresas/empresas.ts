@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EmpresaService } from '../../services/domain/empresa.service';
 
-/**
- * Generated class for the EmpresasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +10,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EmpresasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public empresaService: EmpresaService) {
   }
+
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EmpresasPage');
-  }
-
+    this.empresaService.findAll()
+      .subscribe(response =>{
+        console.log(response);
+      },
+      error =>{
+        console.log(error);
+      });
+    }
 }
