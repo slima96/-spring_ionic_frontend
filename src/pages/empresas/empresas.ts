@@ -28,8 +28,6 @@ export class EmpresasPage {
       .subscribe(response =>{
         this.items = response;
       },
-      error =>{
-        console.log(error);
-      });
+      error =>{});
     }
 }
