@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { API_CONFIG } from '../../config/api.config';
+import { PessoaDTO } from '../../models/pessoa.dto';
+import { PessoaService } from '../../services/domain/pessoa.service';
 import { StorageService } from '../../services/storage.service';
 
 @IonicPage()
@@ -9,19 +12,33 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ProfilePage {
 
-  usuario: string;
+  pessoa: PessoaDTO;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public storage: StorageService) {
+    public storage: StorageService,
+    public pessoaService: PessoaService) {
   }
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
     if(localUser && localUser.usuario){
-      this.usuario = localUser.usuario;
+      this.pessoaService.findByUsuario(localUser.usuario)
+        .subscribe(response => {
+          this.pessoa = response;
+          this.getImageIfExists();
+        },
+        error =>{});
     }
+  }
+
+  getImageIfExists(){
+    this.pessoaService.getImageFromBucket(this.pessoa.id)
+      .subscribe(response => {
+        this.pessoa.imageUrl = `${API_CONFIG.bucketBaseUrl}/user${this.pessoa.id}.jpg`;
+      },
+      error =>{});
   }
 
 }

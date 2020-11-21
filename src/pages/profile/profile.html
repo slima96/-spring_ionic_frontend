@@ -8,5 +8,8 @@
 </ion-header>
 
 <ion-content padding>
-{{ usuario }}
+  <ion-avatar>
+    <img class="circle" [src]="pessoa?.imageUrl || 'assets/imgs/avatar-blank.png'" alt="">
+  </ion-avatar>
+  <h2 text-center>{{pessoa?.nome}}</h2>
 </ion-content>
