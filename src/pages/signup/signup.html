@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="signupUser(); $event.preventDefault()">
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
-      <ion-input name="nome" type="text"></ion-input>
+      <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Usuario*</ion-label>
-      <ion-input name="usuario" type="text"></ion-input>
+      <ion-input formControlName="usuario" type="text"></ion-input>
     </ion-item>
     <button ion-button block type="submit">Registrar usuário</button>
   </form>
