@@ -14,12 +14,7 @@ export class PessoaService {
     }
 
     findByUsuario(usuario: string) : Observable<PessoaDTO> {
-        
-        let token = this.storage.getLocalUser().token;
-        let authHeader = new HttpHeaders({'Authorization': 'Bearer ' + token});
-        return this.http.get<PessoaDTO>(
-            `${API_CONFIG.baseUrl}/pessoas/usuario?value=${usuario}`,
-            {'headers': authHeader});
+         return this.http.get<PessoaDTO>(`${API_CONFIG.baseUrl}/pessoas/usuario?value=${usuario}`);
 
     }
 
