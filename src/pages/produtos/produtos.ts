@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProdutoDTO } from '../../models/produto.dto';
 
 /**
  * Generated class for the ProdutosPage page.
@@ -15,11 +16,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProdutosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items : ProdutoDTO[];
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProdutosPage');
-  }
+    this.items = [
+      {
+        id: "1",
+        codigo: "1001",
+        descricao: "prod 1",
+        ciclo: 20.00,
+        cavidade: 12.0,
+        preco: 100.00
 
+      },
+      {
+        id: "2",
+        codigo: "1002",
+        descricao: "prod 2",
+        ciclo: 20.00,
+        cavidade: 12.0,
+        preco: 100.00
+
+      }
+    ]
+  };
 }

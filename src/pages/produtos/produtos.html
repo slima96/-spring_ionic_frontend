@@ -1,13 +1,23 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Produtos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="insertProduto(); $event.preventDefault()">
-    <ion-item>
-      <ion-label ></ion-label>
-    </ion-item>
-  </form>
+  <ion-list>
+    <button ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start>
+        <img [src]="item.imageUrl || 'assets/imgs/prod.jpg'">
+      </ion-thumbnail>
+      <h2>{{item.nome}}</h2>
+      <p>{{item.descricao}}</p> 
+      <p>{{item.ciclo}}</p>  
+      <p>{{item.cavidade}}</p> 
+      <p>{{item.preco | currency}}</p>
+    </button>
+  </ion-list>
 </ion-content>
