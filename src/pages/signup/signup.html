@@ -10,10 +10,17 @@
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls['nome'].dirty && formGroup.controls['nome'].errors" margin-left>Valor inválido</p>
     <ion-item>
       <ion-label stacked>Usuario*</ion-label>
       <ion-input formControlName="usuario" type="text"></ion-input>
     </ion-item>
-    <button ion-button block type="submit">Registrar usuário</button>
+    <p class="danger" *ngIf="formGroup.controls['usuario'].dirty && formGroup.controls['usuario'].errors" margin-left>Valor inválido</p>
+    <ion-item>
+      <ion-label stacked>Senha*</ion-label>
+      <ion-input formControlName="senha" type="password"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls['senha'].dirty && formGroup.controls['senha'].errors" margin-left>Valor inválido</p>
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Registrar usuário</button>
   </form>
 </ion-content>
