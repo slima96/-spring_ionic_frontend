@@ -30,8 +30,4 @@ export class EmpresasPage {
       },
       error =>{});
     }
-
-    showProdutos(){
-      this.navCtrl.push('ProdutosPage');
-    }
 }
