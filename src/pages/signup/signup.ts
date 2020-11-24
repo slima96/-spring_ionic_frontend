@@ -44,7 +44,7 @@ export class SignupPage {
         {
           text: 'Ok',
           handler: () => {
-            this.navCtrl.pop();
+            this.navCtrl.setRoot('HomePage');
           }
         }
       ]
